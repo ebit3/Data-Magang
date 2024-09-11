@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Coba Fitur Proyek</title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+            integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    </head>
+
+    <body>
+        <div class="container my-5">
+            <h1>Selamat Datang, <span id="usernameDisplay"></span>!</h1>
+            <p>Email: <span id="emailDisplay"></span></p>
+            <h3>Halaman Kasir</h3>
+
+            <!-- Tombol Logout -->
+            <button id="logoutBtn" class="btn btn-danger">Logout</button>
+        </div>
+
+        <script>
+            // Mengambil informasi pengguna dari localStorage
+            const loggedInUser = JSON.parse(localStorage.getItem('loggedInUser'));
+
+            // Menampilkan informasi pengguna di halaman index
+            if (loggedInUser) {
+                document.getElementById('usernameDisplay').innerText = loggedInUser.username;
+                document.getElementById('emailDisplay').innerText = loggedInUser.email;
+            } else {
+                // Jika pengguna belum login, redirect ke halaman login
+                window.location.href = 'auth/login.html';
+            }
+
+            // Handle logout
+            document.getElementById('logoutBtn').addEventListener('click', function () {
+                // Hapus informasi pengguna dari localStorage
+                localStorage.removeItem('loggedInUser');
+
+                // Redirect ke halaman login
+                window.location.href = 'auth/login.html';
+            });
+        </script>
+
+        <!-- bootstrap -->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+            crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+            integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+            crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js"
+            integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy"
+            crossorigin="anonymous"></script>
+    </body>
+
+</html>
